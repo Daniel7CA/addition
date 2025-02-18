@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1em;
+}
+
+input {
+  margin-left: 3px;
+  margin-right: 3px;
+  font-size: 1em;
+  border-color: black;
+}
+
+button {
+  font-size: 1em;
+  padding: 4px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+a:visited {
+  color: #0000EE;
+}
+
+a:active {
+  color: #FF0000;
+}
