@@ -10,16 +10,18 @@ function generateNumbers() {
   num2 = Math.floor(Math.random() * 50);
 }
 
-function placeEquation(answer = "?") {
-  document.getElementById("equation").textContent = `${num1} + ${num2} = ${answer}`; 
+function placeEquation(answer = "?", equalsSymbol = "=") {
+  document.getElementById("equation").textContent = `${num1} + ${num2} ${equalsSymbol} ${answer}`; 
 }
 
 function checkAnswer() {
   const answerField = document.getElementById("answer");
-  const userInput = answerField.value.trim();
+  let userInput = answerField.value.trim();
 
   if (!userInput || isNaN(userInput)) {
-    document.getElementById("result").textContent = "Please enter a valid number.";
+    if (!userInput)
+      userInput = userInput + " "
+    document.getElementById("result").textContent = `Your answer '${userInput}' is not correct. Please enter a valid number.`;
     answerField.value = "";
     return;
   }
@@ -27,15 +29,15 @@ function checkAnswer() {
   const userAnswer = parseInt(userInput);
   const correctAnswer = num1 + num2;
 
-  placeEquation(userAnswer);
-
   answerField.remove();
   document.getElementById("submit").remove();
 
   if (userAnswer === correctAnswer) {
-    document.getElementById("result").innerHTML = `Correct! <a href="#" onclick="resetGame(true)">Try Another</a>`;
+    placeEquation(userAnswer);
+    document.getElementById("result").innerHTML = `Your answer '${userInput}' is correct! <a href="#" onclick="resetGame(true)">Try Another</a>`;
   } else {
-    document.getElementById("result").innerHTML = `Incorrect! <a href="#" onclick="resetGame(false)">Try Again</a>`;
+    placeEquation(userAnswer, "≠");
+    document.getElementById("result").innerHTML = `Your answer '${userInput}' is incorrect! <a href="#" onclick="resetGame(false)">Try Again</a>`;
   }
 }
 
